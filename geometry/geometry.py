@@ -1,4 +1,5 @@
 from core.attribute import Attribute
+import numpy
 
 class Geometry(object):
 
@@ -37,6 +38,35 @@ class Geometry(object):
             newPositionData.append(newPos)
 
         self.attributes[variableName].data = newPositionData
+
+        # chapter 6-3
+        # extract the rotation submatrix
+        rotationMatrix = numpy.array( [ matrix[0][0:3],
+                                        matrix[1][0:3], 
+                                        matrix[2][0:3]])
+        oldVertexNormalData = self.attributes["vertexNormal"].data
+        newVertexNormalData = []
+
+        for oldNormal in oldVertexNormalData:
+            newNormal = oldNormal.copy()
+            newNormal = rotationMatrix @ newNormal
+            newVertexNormalData.append( newNormal )            
+        
+        self.attributes["vertexNormal"].data = newVertexNormalData
+
+        oldFaceNormalData = self.attributes["faceNormal"].data
+        newFaceNormalData = []
+
+        for oldNormal in oldFaceNormalData:
+            newNormal = oldNormal.copy()
+            newNormal = rotationMatrix @ newNormal
+            newFaceNormalData.append( newNormal )
+        
+        self.attributes["faceNormal"].data = newFaceNormalData
+        
+
+
+
         # new data must be uploade
         self.attributes[variableName].uploadData()
 

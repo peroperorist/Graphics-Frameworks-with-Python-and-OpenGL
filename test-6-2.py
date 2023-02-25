@@ -3,7 +3,6 @@ from core.renderer import Renderer
 from core.scene import Scene
 from core.camera import Camera
 from core.mesh import Mesh
-from geometry.boxGeometry import BoxGeometry
 from core.texture import Texture
 from geometry.rectangleGeometry import RectangleGeometry
 from material.surfaceMaterial import SurfaceMaterial
@@ -27,16 +26,21 @@ class Test(Base):
         self.renderer = Renderer()
         self.scene = Scene()
         self.camera = Camera( aspectRatio=800/600)
-        self.camera.setPosition( [0, 0, 4])
+        self.camera.setPosition( [0, 0, 2.5])
 
-        geometry = BoxGeometry()
-        #material = SurfaceMaterial( {"useVertexColors": True} )
-        material = SurfaceMaterial( 
-            {"useVertexColors": True,
-             "wireframe":       True,
-             "lineWidth":       8} )
+        ambientLight = AmbientLight( color=[0.3, 0.3, 0.3] )
+        self.scene.add( ambientLight )
+        pointLight = PointLight( color=[1, 1, 1], position=[1.2, 1.2, 0.3])
+        self.scene.add( pointLight )
+
+        colorTex = Texture("images/brick-color.png")
+        bumpTex = Texture("images/brick-bump.png")
         
-        self.mesh = Mesh( geometry, material )
+
+        geometry = RectangleGeometry(width=2, height=2)
+        bumpMaterial = LambertMaterial( texture=colorTex, bumpTexture=bumpTex, properties={"bumpStrength": 1} )
+        
+        self.mesh = Mesh( geometry, bumpMaterial )
         self.scene.add( self.mesh )
 
     def update(self):

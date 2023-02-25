@@ -31,7 +31,14 @@ class RectangleGeometry(Geometry):
         T0, T1, T2, T3 = [0,0], [1,0], [0,1], [1,1]
         uvData = [T0,T1,T3, T0,T3,T2]
         self.addAttribute("vec2", "vertexUV", uvData)
+
+        # chapter 6-3
+        normalVector = [0, 0, 1]
+        normalData = [normalVector] * 6
+        self.addAttribute("vec3", "vertexNormal", normalData)
+        self.addAttribute("vec3", "faceNormal", normalData)
         
+
         self.countVertices()
 
 
