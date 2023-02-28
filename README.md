@@ -8,12 +8,12 @@ Now, the author or publisher might offer them.
 
 ## There are problems
 ### Adding multi posteffects doesn't work, though it seems that adding only a posteffect works.
-The last part of chapter 5 (test-5-12-2.py) and some files of chapter 6 don't work.
+The last part of chapter 5 (test-5-12-2.py), test-6-3-combined.py and test-6-4.py of chapter 6 don't work.
 It is unclear whether the cause is my mistake or the codes in the book.
 I haven't debugged it deeply.
 
 ### parametricGeometry.py
-When the file is used, a runtime warning appears. It is probably caused by the code in the book.
+When the file is used, a runtime warning appears. It is probably caused by the code for **parametricGeometry.py** in the book.
 
 RuntimeWarning: invalid value encountered in true_divide
 
