@@ -13,11 +13,13 @@ It is unclear whether the cause is my mistake or the codes in the book.
 I haven't debugged it deeply.
 
 ### parametricGeometry.py
-When the file is used, a runtime warning appears. It is probably caused by the code for **parametricGeometry.py** in the book.
+When the file is used, a runtime warning appears. It may becaused by the code for **parametricGeometry.py** in the book.
 
-RuntimeWarning: invalid value encountered in true_divide
+**Runtime warning: invalid value encountered in true_divide**
 
-normal = normal / numpy.linalg.norm(normal)
+**normal = normal / numpy.linalg.norm(normal)**
+
+The warning appears when norml = [0., 0., 0.], so probably **Zero Division** happens.
 
 ### libpng warning: iCCP: known incorrect sRGB profile
 You may clear the warning by opening and resaving png files.
