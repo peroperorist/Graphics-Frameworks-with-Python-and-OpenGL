@@ -13,7 +13,7 @@ It is unclear whether the cause is my mistake or the codes in the book.
 I haven't debugged it deeply.
 
 ### parametricGeometry.py
-When the file is used, a runtime warning appears. It may becaused by the code for **parametricGeometry.py** in the book.
+When the file is used, a runtime warning appears. It may be caused by the code for **parametricGeometry.py** in the book.
 
 **Runtime warning: invalid value encountered in true_divide**
 
